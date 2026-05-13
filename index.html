@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>历史数据 - 州排名</title>
+    <title>历史数据-州排名</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -23,6 +23,26 @@
             position: sticky;
             top: 0;
             z-index: 100;
+        }
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .back-btn {
+            text-decoration: none;
+            padding: 6px 14px;
+            background: #e2e8f0;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #333;
+            transition: all .2s;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .back-btn:hover {
+            background: #cbd5e1;
         }
         .nav-brand {
             font-size: 16px;
@@ -194,16 +214,19 @@
             .split-layout { flex-direction: column; }
             .sidebar { width: 100%; max-height: 200px; }
             .state-data-table th, .state-data-table td { padding: 6px 8px; font-size: 12px; }
+            .nav-left { gap: 10px; }
+            .back-btn { padding: 4px 10px; font-size: 11px; }
+            .nav-brand { font-size: 13px; }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <span class="nav-brand">📊 历史数据-州排名</span>
-        <div style="display: flex; gap: 10px; align-items: center;">
-            <a href="https://devilguoxu.github.io/dashboard/" target="_blank" style="text-decoration: none; padding: 6px 12px; background: #3b82f6; border-radius: 6px; font-size: 12px; color: white;">🏠 返回主看板</a>
-            <span class="nav-update" id="updateTime">加载中...</span>
+        <div class="nav-left">
+            <button class="back-btn" onclick="location.href='https://devilguoxu.github.io/dashboard/'">← 返回主看板</button>
+            <span class="nav-brand">📊 历史数据-州排名</span>
         </div>
+        <span class="nav-update" id="updateTime">加载中...</span>
     </nav>
 
     <div class="container">
@@ -336,7 +359,7 @@
                 h += '<td class="ctr">' + x.rating + '</td>';
                 h += '</tr>';
             }
-            h += '</tbody></table>';
+            h += '</tbody></tr>';
             
             document.getElementById('stateContent').innerHTML = h;
         }
